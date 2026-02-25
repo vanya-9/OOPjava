@@ -26,6 +26,7 @@ public class CommandFactory {
         }
         catch(Exception e){
             logger.severe("Mistake working file properties");
+            throw new RuntimeException();
         }
     }
 
