@@ -11,12 +11,12 @@ public class Sub implements Command {
             throw new IllegalArgumentException("- does not accept arguments");
         }
         if (context.getStackSize() < 2) {
-            throw new RuntimeException("Not enough elements on stack for DIV (need 2, have " + context.getStackSize() + ")");
+            throw new RuntimeException("Not enough elements on stack for Sub (need 2, have " + context.getStackSize() + ")");
         }
         
         Double numberOne = context.pop();
         Double numberTwo = context.pop();
-        context.push(numberOne - numberTwo);
+        context.push(numberTwo - numberOne);
     }
     
 }

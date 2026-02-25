@@ -8,11 +8,11 @@ public class Mul implements Command {
     @Override
     public void execute(ExecutionContext context, List<String> commandArgs){
         if (!commandArgs.isEmpty()) {
-            throw new IllegalArgumentException("DIV does not accept arguments");
+            throw new IllegalArgumentException("MUL does not accept arguments");
         }
         
         if (context.getStackSize() < 2) {
-            throw new RuntimeException("Not enough elements on stack for DIV (need 2, have " + context.getStackSize() + ")");
+            throw new RuntimeException("Not enough elements on stack for MUL (need 2, have " + context.getStackSize() + ")");
         }
 
         Double numberOne = context.pop();

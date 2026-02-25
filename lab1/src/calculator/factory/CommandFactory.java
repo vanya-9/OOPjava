@@ -42,7 +42,7 @@ public class CommandFactory {
             return (Command) commandClass.getDeclaredConstructor().newInstance(); 
         } catch (Exception e) {
             logger.severe("Mistake create command");
-            throw new RuntimeException(e);
+            throw new RuntimeException();
         }
     }
 }
