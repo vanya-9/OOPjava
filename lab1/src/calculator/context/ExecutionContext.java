@@ -7,6 +7,7 @@ import java.util.HashMap;
 public class ExecutionContext {
     private Deque<Double> stack = new ArrayDeque<>();
     private Map<String, Double> variables = new HashMap<>();
+    private boolean shouldContinue = true;
 
     public void push(Double value){
         stack.push(value);
@@ -34,5 +35,13 @@ public class ExecutionContext {
 
     public int getStackSize(){
         return stack.size();
+    }
+
+    public boolean shouldContinue(){
+        return shouldContinue;
+    }
+
+    public void stop(){
+        this.shouldContinue = false;
     }
 }

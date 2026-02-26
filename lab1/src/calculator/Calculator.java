@@ -25,7 +25,7 @@ public class Calculator {
         
         String line;
 
-        while ((line = reader.readLine()) != null) { 
+        while (context.shouldContinue() && (line = reader.readLine()) != null) { 
             if (line.isEmpty() || line.startsWith("#")) 
                 continue;
 
