@@ -16,7 +16,7 @@ public class Sub implements Command {
         
         Double numberOne = context.pop();
         Double numberTwo = context.pop();
-        context.push(numberTwo - numberOne);
+        context.push(numberOne - numberTwo);
     }
     
 }

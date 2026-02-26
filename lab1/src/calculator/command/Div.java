@@ -17,10 +17,11 @@ public class Div implements Command {
 
         Double numberOne = context.pop();
         Double numberTwo = context.pop();
-        if (numberTwo != 0){
+
+        if (numberTwo != 0.0){
             context.push(numberOne / numberTwo);
         }else{
-            throw new ArithmeticException("Деление на 0");
+            throw new ArithmeticException("Division by zero");
         }
     }
 }
