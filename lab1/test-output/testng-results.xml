@@ -1,92 +1,136 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="10" passed="10" failed="0" skipped="0">
+<testng-results ignored="0" total="11" passed="10" failed="1" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2026-02-26T21:02:09 NOVT" name="Command line suite" finished-at="2026-02-26T21:02:09 NOVT" duration-ms="96">
+  <suite started-at="2026-02-27T14:57:53 NOVT" name="Command line suite" finished-at="2026-02-27T14:57:53 NOVT" duration-ms="156">
     <groups>
     </groups>
-    <test started-at="2026-02-26T21:02:09 NOVT" name="Command line test" finished-at="2026-02-26T21:02:09 NOVT" duration-ms="96">
+    <test started-at="2026-02-27T14:57:53 NOVT" name="Command line test" finished-at="2026-02-27T14:57:53 NOVT" duration-ms="156">
       <class name="calculator.CalculatorTest">
-        <test-method is-config="true" signature="setUp()[pri:0, instance:calculator.CalculatorTest@7cbd213e]" started-at="2026-02-26T21:02:09 NOVT" name="setUp" finished-at="2026-02-26T21:02:09 NOVT" duration-ms="12" status="PASS">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:calculator.CalculatorTest@192d3247]" started-at="2026-02-27T14:57:53 NOVT" name="setUp" finished-at="2026-02-27T14:57:53 NOVT" duration-ms="13" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="testAddition()[pri:0, instance:calculator.CalculatorTest@7cbd213e]" started-at="2026-02-26T21:02:09 NOVT" name="testAddition" finished-at="2026-02-26T21:02:09 NOVT" duration-ms="3" status="PASS">
+        <test-method signature="testAddition()[pri:0, instance:calculator.CalculatorTest@192d3247]" started-at="2026-02-27T14:57:53 NOVT" name="testAddition" finished-at="2026-02-27T14:57:53 NOVT" duration-ms="4" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testAddition -->
-        <test-method is-config="true" signature="setUp()[pri:0, instance:calculator.CalculatorTest@7cbd213e]" started-at="2026-02-26T21:02:09 NOVT" name="setUp" finished-at="2026-02-26T21:02:09 NOVT" duration-ms="1" status="PASS">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:calculator.CalculatorTest@192d3247]" started-at="2026-02-27T14:57:53 NOVT" name="setUp" finished-at="2026-02-27T14:57:53 NOVT" duration-ms="0" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="testDefineAndPush()[pri:0, instance:calculator.CalculatorTest@7cbd213e]" started-at="2026-02-26T21:02:09 NOVT" name="testDefineAndPush" finished-at="2026-02-26T21:02:09 NOVT" duration-ms="1" status="PASS">
+        <test-method signature="testDefineAndPush()[pri:0, instance:calculator.CalculatorTest@192d3247]" started-at="2026-02-27T14:57:53 NOVT" name="testDefineAndPush" finished-at="2026-02-27T14:57:53 NOVT" duration-ms="1" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testDefineAndPush -->
-        <test-method is-config="true" signature="setUp()[pri:0, instance:calculator.CalculatorTest@7cbd213e]" started-at="2026-02-26T21:02:09 NOVT" name="setUp" finished-at="2026-02-26T21:02:09 NOVT" duration-ms="1" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setUp -->
-        <test-method signature="testDivision()[pri:0, instance:calculator.CalculatorTest@7cbd213e]" started-at="2026-02-26T21:02:09 NOVT" name="testDivision" finished-at="2026-02-26T21:02:09 NOVT" duration-ms="0" status="PASS">
+        <test-method signature="testDivision()[pri:0, instance:calculator.CalculatorTest@192d3247]" started-at="2026-02-27T14:57:53 NOVT" name="testDivision" finished-at="2026-02-27T14:57:53 NOVT" duration-ms="2" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testDivision -->
-        <test-method signature="testDivisionByZero()[pri:0, instance:calculator.CalculatorTest@7cbd213e]" started-at="2026-02-26T21:02:09 NOVT" name="testDivisionByZero" finished-at="2026-02-26T21:02:09 NOVT" duration-ms="0" status="PASS">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:calculator.CalculatorTest@192d3247]" started-at="2026-02-27T14:57:53 NOVT" name="setUp" finished-at="2026-02-27T14:57:53 NOVT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="testDivisionByZero()[pri:0, instance:calculator.CalculatorTest@192d3247]" started-at="2026-02-27T14:57:53 NOVT" name="testDivisionByZero" finished-at="2026-02-27T14:57:53 NOVT" duration-ms="1" status="FAIL">
+          <exception class="java.lang.IllegalArgumentException">
+            <message>
+              <![CDATA[Division by zero]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.IllegalArgumentException: Division by zero
+at calculator.command.Div.execute(Div.java:24)
+at calculator.CalculatorTest.testDivisionByZero(CalculatorTest.java:66)
+at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:664)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:227)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:957)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:200)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+at org.testng.TestRunner.privateRun(TestRunner.java:848)
+at org.testng.TestRunner.run(TestRunner.java:621)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
+at org.testng.SuiteRunner.run(SuiteRunner.java:336)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1280)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1200)
+at org.testng.TestNG.runSuites(TestNG.java:1114)
+at org.testng.TestNG.run(TestNG.java:1082)
+at org.testng.TestNG.privateMain(TestNG.java:1440)
+at org.testng.TestNG.main(TestNG.java:1404)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.IllegalArgumentException -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testDivisionByZero -->
-        <test-method is-config="true" signature="setUp()[pri:0, instance:calculator.CalculatorTest@7cbd213e]" started-at="2026-02-26T21:02:09 NOVT" name="setUp" finished-at="2026-02-26T21:02:09 NOVT" duration-ms="0" status="PASS">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:calculator.CalculatorTest@192d3247]" started-at="2026-02-27T14:57:53 NOVT" name="setUp" finished-at="2026-02-27T14:57:53 NOVT" duration-ms="0" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method is-config="true" signature="setUp()[pri:0, instance:calculator.CalculatorTest@7cbd213e]" started-at="2026-02-26T21:02:09 NOVT" name="setUp" finished-at="2026-02-26T21:02:09 NOVT" duration-ms="1" status="PASS">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:calculator.CalculatorTest@192d3247]" started-at="2026-02-27T14:57:53 NOVT" name="setUp" finished-at="2026-02-27T14:57:53 NOVT" duration-ms="1" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="testFullScenario()[pri:0, instance:calculator.CalculatorTest@7cbd213e]" started-at="2026-02-26T21:02:09 NOVT" name="testFullScenario" finished-at="2026-02-26T21:02:09 NOVT" duration-ms="1" status="PASS">
+        <test-method signature="testFullScenario()[pri:0, instance:calculator.CalculatorTest@192d3247]" started-at="2026-02-27T14:57:53 NOVT" name="testFullScenario" finished-at="2026-02-27T14:57:53 NOVT" duration-ms="1" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testFullScenario -->
-        <test-method signature="testMultiplication()[pri:0, instance:calculator.CalculatorTest@7cbd213e]" started-at="2026-02-26T21:02:09 NOVT" name="testMultiplication" finished-at="2026-02-26T21:02:09 NOVT" duration-ms="1" status="PASS">
+        <test-method signature="testMultiplication()[pri:0, instance:calculator.CalculatorTest@192d3247]" started-at="2026-02-27T14:57:53 NOVT" name="testMultiplication" finished-at="2026-02-27T14:57:53 NOVT" duration-ms="2" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testMultiplication -->
-        <test-method is-config="true" signature="setUp()[pri:0, instance:calculator.CalculatorTest@7cbd213e]" started-at="2026-02-26T21:02:09 NOVT" name="setUp" finished-at="2026-02-26T21:02:09 NOVT" duration-ms="0" status="PASS">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:calculator.CalculatorTest@192d3247]" started-at="2026-02-27T14:57:53 NOVT" name="setUp" finished-at="2026-02-27T14:57:53 NOVT" duration-ms="0" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method is-config="true" signature="setUp()[pri:0, instance:calculator.CalculatorTest@7cbd213e]" started-at="2026-02-26T21:02:09 NOVT" name="setUp" finished-at="2026-02-26T21:02:09 NOVT" duration-ms="1" status="PASS">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:calculator.CalculatorTest@192d3247]" started-at="2026-02-27T14:57:53 NOVT" name="setUp" finished-at="2026-02-27T14:57:53 NOVT" duration-ms="1" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="testPeekEmptyStack()[pri:0, instance:calculator.CalculatorTest@7cbd213e]" started-at="2026-02-26T21:02:09 NOVT" name="testPeekEmptyStack" finished-at="2026-02-26T21:02:09 NOVT" duration-ms="0" status="PASS">
+        <test-method signature="testPeekEmptyStack()[pri:0, instance:calculator.CalculatorTest@192d3247]" started-at="2026-02-27T14:57:53 NOVT" name="testPeekEmptyStack" finished-at="2026-02-27T14:57:53 NOVT" duration-ms="1" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testPeekEmptyStack -->
-        <test-method signature="testPopEmptyStack()[pri:0, instance:calculator.CalculatorTest@7cbd213e]" started-at="2026-02-26T21:02:09 NOVT" name="testPopEmptyStack" finished-at="2026-02-26T21:02:09 NOVT" duration-ms="1" status="PASS">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:calculator.CalculatorTest@192d3247]" started-at="2026-02-27T14:57:53 NOVT" name="setUp" finished-at="2026-02-27T14:57:53 NOVT" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="testPopEmptyStack()[pri:0, instance:calculator.CalculatorTest@192d3247]" started-at="2026-02-27T14:57:53 NOVT" name="testPopEmptyStack" finished-at="2026-02-27T14:57:53 NOVT" duration-ms="1" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testPopEmptyStack -->
-        <test-method is-config="true" signature="setUp()[pri:0, instance:calculator.CalculatorTest@7cbd213e]" started-at="2026-02-26T21:02:09 NOVT" name="setUp" finished-at="2026-02-26T21:02:09 NOVT" duration-ms="0" status="PASS">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:calculator.CalculatorTest@192d3247]" started-at="2026-02-27T14:57:53 NOVT" name="setUp" finished-at="2026-02-27T14:57:53 NOVT" duration-ms="1" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method is-config="true" signature="setUp()[pri:0, instance:calculator.CalculatorTest@7cbd213e]" started-at="2026-02-26T21:02:09 NOVT" name="setUp" finished-at="2026-02-26T21:02:09 NOVT" duration-ms="1" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setUp -->
-        <test-method signature="testSQRT()[pri:0, instance:calculator.CalculatorTest@7cbd213e]" started-at="2026-02-26T21:02:09 NOVT" name="testSQRT" finished-at="2026-02-26T21:02:09 NOVT" duration-ms="0" status="PASS">
+        <test-method signature="testSQRT()[pri:0, instance:calculator.CalculatorTest@192d3247]" started-at="2026-02-27T14:57:53 NOVT" name="testSQRT" finished-at="2026-02-27T14:57:53 NOVT" duration-ms="1" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testSQRT -->
-        <test-method is-config="true" signature="setUp()[pri:0, instance:calculator.CalculatorTest@7cbd213e]" started-at="2026-02-26T21:02:09 NOVT" name="setUp" finished-at="2026-02-26T21:02:09 NOVT" duration-ms="1" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setUp -->
-        <test-method signature="testSubtraction()[pri:0, instance:calculator.CalculatorTest@7cbd213e]" started-at="2026-02-26T21:02:09 NOVT" name="testSubtraction" finished-at="2026-02-26T21:02:09 NOVT" duration-ms="1" status="PASS">
+        <test-method signature="testSubtraction()[pri:0, instance:calculator.CalculatorTest@192d3247]" started-at="2026-02-27T14:57:53 NOVT" name="testSubtraction" finished-at="2026-02-27T14:57:53 NOVT" duration-ms="1" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testSubtraction -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:calculator.CalculatorTest@192d3247]" started-at="2026-02-27T14:57:53 NOVT" name="setUp" finished-at="2026-02-27T14:57:53 NOVT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="testUnknownCommand()[pri:0, instance:calculator.CalculatorTest@192d3247]" started-at="2026-02-27T14:57:53 NOVT" name="testUnknownCommand" finished-at="2026-02-27T14:57:53 NOVT" duration-ms="56" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testUnknownCommand -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:calculator.CalculatorTest@192d3247]" started-at="2026-02-27T14:57:53 NOVT" name="setUp" finished-at="2026-02-27T14:57:53 NOVT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
       </class> <!-- calculator.CalculatorTest -->
     </test> <!-- Command line test -->
   </suite> <!-- Command line suite -->

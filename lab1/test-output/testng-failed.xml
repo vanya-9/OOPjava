@@ -6,7 +6,7 @@
       <class name="calculator.CalculatorTest">
         <methods>
           <include name="setUp"/>
-          <include name="testDivision"/>
+          <include name="testDivisionByZero"/>
         </methods>
       </class> <!-- calculator.CalculatorTest -->
     </classes>

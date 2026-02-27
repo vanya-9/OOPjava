@@ -25,7 +25,7 @@
       <span class="top-banner-title-font">Test results</span>
       <button id="button" class="button">Switch Retro Theme</button> <!-- button -->
       <br/>
-      <span class="top-banner-font-1">1 suite</span>
+      <span class="top-banner-font-1">1 suite, 1 failed test</span>
     </div> <!-- top-banner-root -->
     <div class="navigator-root">
       <div class="navigator-suite-header">
@@ -39,7 +39,7 @@
         <div class="rounded-window">
           <div class="suite-header light-rounded-window-top">
             <a href="#" panel-name="suite-Command_line_suite" class="navigator-link">
-              <span class="suite-name border-passed">Command line suite</span>
+              <span class="suite-name border-failed">Command line suite</span>
             </a> <!-- navigator-link -->
           </div> <!-- suite-header light-rounded-window-top -->
           <div class="navigator-suite-content">
@@ -92,7 +92,21 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">10 methods,   10 passed</span>
+                    <span class="method-stats">11 methods, 1 failed,   10 passed</span>
+                  </li>
+                  <li>
+                    <span class="method-list-title failed">Failed methods</span>
+                    <span class="show-or-hide-methods failed">
+                      <a href="#" panel-name="suite-Command_line_suite" class="hide-methods failed suite-Command_line_suite"> (hide)</a> <!-- hide-methods failed suite-Command_line_suite -->
+                      <a href="#" panel-name="suite-Command_line_suite" class="show-methods failed suite-Command_line_suite"> (show)</a> <!-- show-methods failed suite-Command_line_suite -->
+                    </span>
+                    <div class="method-list-content failed suite-Command_line_suite">
+                      <span>
+                        <img src="failed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Command_line_suite" title="calculator.CalculatorTest" class="method navigator-link" hash-for-method="testDivisionByZero">testDivisionByZero</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                    </div> <!-- method-list-content failed suite-Command_line_suite -->
                   </li>
                   <li>
                     <span class="method-list-title passed">Passed methods</span>
@@ -114,11 +128,6 @@
                       <span>
                         <img src="passed.png" width="3%"/>
                         <a href="#" panel-name="suite-Command_line_suite" title="calculator.CalculatorTest" class="method navigator-link" hash-for-method="testDivision">testDivision</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Command_line_suite" title="calculator.CalculatorTest" class="method navigator-link" hash-for-method="testDivisionByZero">testDivisionByZero</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
@@ -151,6 +160,11 @@
                         <a href="#" panel-name="suite-Command_line_suite" title="calculator.CalculatorTest" class="method navigator-link" hash-for-method="testSubtraction">testSubtraction</a> <!-- method navigator-link -->
                       </span>
                       <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Command_line_suite" title="calculator.CalculatorTest" class="method navigator-link" hash-for-method="testUnknownCommand">testUnknownCommand</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
                     </div> <!-- method-list-content passed suite-Command_line_suite -->
                   </li>
                 </ul>
@@ -163,6 +177,27 @@
     <div class="wrapper">
       <div class="main-panel-root">
         <div panel-name="suite-Command_line_suite" class="panel Command_line_suite">
+          <div class="suite-Command_line_suite-class-failed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="failed.png"/>
+              <span class="class-name">calculator.CalculatorTest</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="testDivisionByZero">
+                  </a> <!-- testDivisionByZero -->
+                  <span class="method-name">testDivisionByZero</span>
+                  <div class="stack-trace">java.lang.IllegalArgumentException: Division by zero
+	at calculator.command.Div.execute(Div.java:24)
+	at calculator.CalculatorTest.testDivisionByZero(CalculatorTest.java:66)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+... Removed 24 stack frames
+</div> <!-- stack-trace -->
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Command_line_suite-class-failed -->
           <div class="suite-Command_line_suite-class-passed">
             <div class="main-panel-header rounded-window-top">
               <img src="passed.png"/>
@@ -188,13 +223,6 @@
                   <a name="testDivision">
                   </a> <!-- testDivision -->
                   <span class="method-name">testDivision</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="testDivisionByZero">
-                  </a> <!-- testDivisionByZero -->
-                  <span class="method-name">testDivisionByZero</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
               <div class="method">
@@ -237,6 +265,13 @@
                   <a name="testSubtraction">
                   </a> <!-- testSubtraction -->
                   <span class="method-name">testSubtraction</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="testUnknownCommand">
+                  </a> <!-- testUnknownCommand -->
+                  <span class="method-name">testUnknownCommand</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
@@ -292,52 +327,56 @@ data.addColumn('number', 'Number');
 data.addColumn('string', 'Method');
 data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
-data.addRows(10);
+data.addRows(11);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'testAddition')
+data.setCell(0, 1, 'testUnknownCommand')
 data.setCell(0, 2, 'calculator.CalculatorTest')
-data.setCell(0, 3, 3);
+data.setCell(0, 3, 56);
 data.setCell(1, 0, 1)
-data.setCell(1, 1, 'testSubtraction')
+data.setCell(1, 1, 'testAddition')
 data.setCell(1, 2, 'calculator.CalculatorTest')
-data.setCell(1, 3, 1);
+data.setCell(1, 3, 4);
 data.setCell(2, 0, 2)
-data.setCell(2, 1, 'testFullScenario')
+data.setCell(2, 1, 'testDivision')
 data.setCell(2, 2, 'calculator.CalculatorTest')
-data.setCell(2, 3, 1);
+data.setCell(2, 3, 2);
 data.setCell(3, 0, 3)
-data.setCell(3, 1, 'testDefineAndPush')
+data.setCell(3, 1, 'testMultiplication')
 data.setCell(3, 2, 'calculator.CalculatorTest')
-data.setCell(3, 3, 1);
+data.setCell(3, 3, 2);
 data.setCell(4, 0, 4)
-data.setCell(4, 1, 'testMultiplication')
+data.setCell(4, 1, 'testSubtraction')
 data.setCell(4, 2, 'calculator.CalculatorTest')
 data.setCell(4, 3, 1);
 data.setCell(5, 0, 5)
-data.setCell(5, 1, 'testPopEmptyStack')
+data.setCell(5, 1, 'testFullScenario')
 data.setCell(5, 2, 'calculator.CalculatorTest')
 data.setCell(5, 3, 1);
 data.setCell(6, 0, 6)
-data.setCell(6, 1, 'testDivisionByZero')
+data.setCell(6, 1, 'testDefineAndPush')
 data.setCell(6, 2, 'calculator.CalculatorTest')
-data.setCell(6, 3, 0);
+data.setCell(6, 3, 1);
 data.setCell(7, 0, 7)
-data.setCell(7, 1, 'testSQRT')
+data.setCell(7, 1, 'testPopEmptyStack')
 data.setCell(7, 2, 'calculator.CalculatorTest')
-data.setCell(7, 3, 0);
+data.setCell(7, 3, 1);
 data.setCell(8, 0, 8)
-data.setCell(8, 1, 'testDivision')
+data.setCell(8, 1, 'testSQRT')
 data.setCell(8, 2, 'calculator.CalculatorTest')
-data.setCell(8, 3, 0);
+data.setCell(8, 3, 1);
 data.setCell(9, 0, 9)
 data.setCell(9, 1, 'testPeekEmptyStack')
 data.setCell(9, 2, 'calculator.CalculatorTest')
-data.setCell(9, 3, 0);
+data.setCell(9, 3, 1);
+data.setCell(10, 0, 10)
+data.setCell(10, 1, 'testDivisionByZero')
+data.setCell(10, 2, 'calculator.CalculatorTest')
+data.setCell(10, 3, 1);
 window.suiteTableData['Command_line_suite']= { tableData: data, tableDiv: 'times-div-Command_line_suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 8 ms</span>
+              <span class="suite-total-time">Total running time: 71 ms</span>
               <div id="times-div-Command_line_suite">
               </div> <!-- times-div-Command_line_suite -->
             </div> <!-- times-div -->
@@ -370,80 +409,90 @@ return data;
               </div> <!-- configuration-method before -->
               <div class="test-method">
                 <span class="method-name">testAddition</span>
-                <span class="method-start">14 ms</span>
+                <span class="method-start">15 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method before">
                 <span class="method-name">setUp</span>
-                <span class="method-start">20 ms</span>
+                <span class="method-start">22 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
                 <span class="method-name">testDefineAndPush</span>
-                <span class="method-start">21 ms</span>
+                <span class="method-start">23 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method before">
                 <span class="method-name">setUp</span>
-                <span class="method-start">23 ms</span>
+                <span class="method-start">26 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
                 <span class="method-name">testDivision</span>
-                <span class="method-start">24 ms</span>
+                <span class="method-start">26 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method before">
                 <span class="method-name">setUp</span>
-                <span class="method-start">26 ms</span>
+                <span class="method-start">29 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
+                <img src="failed.png">
+                </img>
                 <span class="method-name">testDivisionByZero</span>
-                <span class="method-start">26 ms</span>
+                <span class="method-start">29 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method before">
                 <span class="method-name">setUp</span>
-                <span class="method-start">27 ms</span>
+                <span class="method-start">31 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
                 <span class="method-name">testFullScenario</span>
-                <span class="method-start">28 ms</span>
-              </div> <!-- test-method -->
-              <div class="test-method">
-                <span class="method-name">testMultiplication</span>
-                <span class="method-start">30 ms</span>
-              </div> <!-- test-method -->
-              <div class="configuration-method before">
-                <span class="method-name">setUp</span>
-                <span class="method-start">30 ms</span>
-              </div> <!-- configuration-method before -->
-              <div class="configuration-method before">
-                <span class="method-name">setUp</span>
                 <span class="method-start">32 ms</span>
-              </div> <!-- configuration-method before -->
-              <div class="test-method">
-                <span class="method-name">testPeekEmptyStack</span>
-                <span class="method-start">33 ms</span>
-              </div> <!-- test-method -->
-              <div class="configuration-method before">
-                <span class="method-name">setUp</span>
-                <span class="method-start">34 ms</span>
-              </div> <!-- configuration-method before -->
-              <div class="test-method">
-                <span class="method-name">testPopEmptyStack</span>
-                <span class="method-start">34 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method before">
                 <span class="method-name">setUp</span>
                 <span class="method-start">35 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
-                <span class="method-name">testSQRT</span>
-                <span class="method-start">36 ms</span>
+                <span class="method-name">testMultiplication</span>
+                <span class="method-start">35 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method before">
                 <span class="method-name">setUp</span>
-                <span class="method-start">37 ms</span>
+                <span class="method-start">38 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
-                <span class="method-name">testSubtraction</span>
-                <span class="method-start">38 ms</span>
+                <span class="method-name">testPeekEmptyStack</span>
+                <span class="method-start">39 ms</span>
               </div> <!-- test-method -->
+              <div class="configuration-method before">
+                <span class="method-name">setUp</span>
+                <span class="method-start">41 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">testPopEmptyStack</span>
+                <span class="method-start">42 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method before">
+                <span class="method-name">setUp</span>
+                <span class="method-start">44 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">testSQRT</span>
+                <span class="method-start">45 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">testSubtraction</span>
+                <span class="method-start">47 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method before">
+                <span class="method-name">setUp</span>
+                <span class="method-start">47 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">testUnknownCommand</span>
+                <span class="method-start">50 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method before">
+                <span class="method-name">setUp</span>
+                <span class="method-start">50 ms</span>
+              </div> <!-- configuration-method before -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
       </div> <!-- main-panel-root -->

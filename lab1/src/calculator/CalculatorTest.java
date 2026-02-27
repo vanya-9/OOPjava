@@ -91,17 +91,6 @@ public class CalculatorTest {
         assertEquals(context.pop(), 3.0, "sqrt(9) = 3");
     }
 
-    // @Test
-    // public void testUnknownCommand() {
-    //     CommandFactory factory = new CommandFactory();
-    //     try {
-    //         factory.create("UNKNOWN_COMMAND");
-    //         Assert.fail("Ожидалось RuntimeException");
-    //     } catch (RuntimeException e) {
-    //         Assert.assertTrue(e.getMessage().contains("Unknow command"));
-    //     }
-    // }
-
     @Test
     public void testDefineAndPush() {
         Command define = new Define();
