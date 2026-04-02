@@ -81,7 +81,7 @@ public class App {
         for(Thread thread : dealers){
             thread.interrupt();
         }
-        System.out.println("[SYSTEM] Все сигналы остановки отправлены. Выход...");
+        System.out.println("Все сигналы остановки отправлены. Выход...");
     }
 
     public int sizeMachineFactory(){
