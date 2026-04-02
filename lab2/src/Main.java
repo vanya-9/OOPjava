@@ -19,7 +19,6 @@ import src.threadpool.ThreadPool;
 
 public class Main {
     public static void main(String[] args){
-        Venv venvApp = new Venv();
         ArrayList<AccessorySupplier> accessorySuppliers = new ArrayList<>();
         ArrayList<Dealer> dealers = new ArrayList<>();
         CarcaseSupplier carcaseSupplier;
@@ -60,23 +59,22 @@ public class Main {
                 dealers.add(dealer);
             }
 
-            Runtime.getRuntime().addShutdownHook(new Thread(() -> {
-                System.out.println("Покидаем программу");
-                for(Thread thread : accessorySuppliers){
+            new Venv(() -> {
+                System.out.println("Покидаем программу...");
+                controller.interrupt();
+
+                for (Thread thread : accessorySuppliers) {
                     thread.interrupt();
                 }
-
-                for(Thread thread : dealers){
-                    thread.interrupt();
-                }
-
                 carcaseSupplier.interrupt();
                 engineSupplier.interrupt();
                 threadPool.stopAll();
-                controller.interrupt();
-                System.out.println("[SYSTEM] Все потоки остановлены. Программа завершена.");
-                venvApp.dispose();
-            }));
+
+                for (Thread thread : dealers) {
+                    thread.interrupt();
+                }
+                System.out.println("[SYSTEM] Все сигналы остановки отправлены. Выход...");
+            });
         
 
         } catch(IOException e){

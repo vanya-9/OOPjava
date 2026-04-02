@@ -7,7 +7,7 @@ import src.factory.ExecFactory;
 
 public class ThreadPool {
     private final List<WorkerThread> workers = new ArrayList<>();
-    private final TaskQueue queue = new TaskQueue();
+    private final TaskQueue queue = new TaskQueue(50);
 
     public ThreadPool(int threadsCount){
         for (int i = 0; i < threadsCount; i++){
@@ -25,6 +25,7 @@ public class ThreadPool {
         for(Thread thread : workers){
             thread.interrupt();
         }
+        queue.interruptWaiters();
     }
 
     private class WorkerThread extends Thread{

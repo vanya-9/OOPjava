@@ -5,21 +5,33 @@ import java.util.Queue;
 
 public class TaskQueue{
     Queue<Runnable> tasks = new LinkedList<>();
-    private final int MAX_TASKS = 100;
+    private final int maxTasks;
+
+    public TaskQueue(int maxCountTasks){
+        this.maxTasks = maxCountTasks;
+    }
 
     public synchronized void put(Runnable task)throws InterruptedException{
-        while(tasks.size() >= MAX_TASKS){
+        while(tasks.size() >= maxTasks){
             wait();
         }
         tasks.add(task);
         notifyAll();
     }
 
+    public synchronized void interruptWaiters(){
+        notifyAll();
+    }
+
     public synchronized Runnable take()throws InterruptedException{
         while(tasks.isEmpty()){
+            if(Thread.currentThread().isInterrupted()){
+                throw new InterruptedException();
+            }
             wait();
         }
+        Runnable task = tasks.poll();
         notifyAll();
-        return tasks.poll();
+        return task;
     }
 }
