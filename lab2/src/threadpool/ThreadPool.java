@@ -6,8 +6,9 @@ import java.util.List;
 import src.factory.ExecFactory;
 
 public class ThreadPool {
+    private final int taskCount = 50;
     private final List<WorkerThread> workers = new ArrayList<>();
-    private final TaskQueue queue = new TaskQueue(50);
+    private final TaskQueue queue = new TaskQueue(taskCount);
 
     public ThreadPool(int threadsCount){
         for (int i = 0; i < threadsCount; i++){

@@ -2,11 +2,14 @@ package src.factory;
 
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.logging.Logger;
 
 public class Factory<T> {
     private final int capacity;
     private final Queue<T> items;
     private volatile int countAllProducts = 0;
+    private static volatile boolean logOn;
+    private static final Logger logger = Logger.getLogger(Factory.class.getName());
 
     public Factory(int capacity) throws IllegalArgumentException{
         if (capacity <= 0){
@@ -22,11 +25,17 @@ public class Factory<T> {
         }
         items.add(accs);
         countAllProducts += 1;
+        if(logOn){
+            logger.info(Thread.currentThread().getName() + " компонент: " + accs.getClass().getSimpleName());
+        }
         notifyAll();
     }
 
     public synchronized T get() throws InterruptedException{
         while(items.isEmpty()) {
+            if(logOn){
+            logger.info(Thread.currentThread().getName() + "ждем, склад пустует");
+        }
             wait();
         }
         notifyAll();
@@ -45,5 +54,8 @@ public class Factory<T> {
 
     public synchronized int getTotalProducts(){
         return countAllProducts;
+    }
+    public static void setLogF(boolean flag){
+        logOn = flag;
     }
 }

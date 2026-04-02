@@ -16,4 +16,8 @@ public class InputData {
     public int getInt(String key){
         return Integer.parseInt(prop.getProperty(key));
     }
+
+    public boolean getBoolean(String key){
+        return Boolean.parseBoolean(prop.getProperty(key));
+    }
 }

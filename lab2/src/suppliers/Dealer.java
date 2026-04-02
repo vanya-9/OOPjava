@@ -21,12 +21,12 @@ public class Dealer extends Thread {
         try{
             while(!isInterrupted()){
                 Machine machine = machineFactory.get();
-                System.out.println("Dealer [" + getName() + "]: Куплена машина ID: " + machine.getId());
+                //System.out.println("Dealer [" + getName() + "]: Куплена машина ID: " + machine.getId());
                 Thread.sleep(frequency);
             }
 
         }catch(InterruptedException e){
-            System.out.println("исклчючение  " + e.getMessage());
+            //System.out.println("исклчючение  " + e.getMessage());
             Thread.currentThread().interrupt();
         }
     }

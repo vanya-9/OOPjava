@@ -26,7 +26,7 @@ public class AccessorySupplier extends Thread{
                 Thread.sleep(frequency);
             }
         }catch(InterruptedException e){
-            System.err.println("Ты поймал исключение " + e.getMessage());
+            //System.err.println("Ты поймал исключение " + e.getMessage());
             Thread.currentThread().interrupt();
         }
     }

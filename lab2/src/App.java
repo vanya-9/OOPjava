@@ -26,8 +26,11 @@ public class App {
     private ThreadPool threadPool;
     private Controller controller;
 
+    public boolean logOn;
+
     public App(InputData cfg){
         this.config = cfg;
+        this.logOn = this.config.getBoolean("LogOn");
     }
 
     public void start(){
@@ -93,6 +96,11 @@ public class App {
         for(Dealer dealer : dealers){
             dealer.setFrequency(frequency);
         }
+    }
+
+    public void setLog(boolean flag){
+        logOn = flag;
+        Factory.setLogF(flag);
     }
 
 

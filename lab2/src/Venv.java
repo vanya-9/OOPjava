@@ -4,6 +4,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JSlider;
+import javax.swing.JToggleButton;
 import javax.swing.SwingConstants;
 import javax.swing.Timer;
 import javax.swing.event.ChangeEvent;
@@ -32,7 +33,7 @@ public class Venv extends JFrame {
         });
 
         Container container = super.getContentPane();
-        container.setLayout(new GridLayout(3, 2, 2, 2));
+        container.setLayout(new GridLayout(4, 2, 2, 2));
         this.setVisible(true);
 
         this.app = app;
@@ -58,9 +59,19 @@ public class Venv extends JFrame {
             }
         });
 
+        JToggleButton logButton = new JToggleButton("Логирование " + (app.logOn ? "вкл" : "выкл"));
+        logButton.setSelected(app.logOn);
+        logButton.addActionListener(e -> {
+            boolean selected = logButton.isSelected();
+            app.setLog(selected);
+            logButton.setText("Логирование: " + (selected ? "вкл" : "выкл"));
+        });
+
         container.add(machineOnFactoryAll);
         container.add(machineOnFactoryNow);
         container.add(frequencySlider);
+        // container.add(new JLabel("Управление:", SwingConstants.RIGHT)); 
+        container.add(logButton);
 
         Timer updateTimer = new Timer(200, e -> updateStats());
         updateTimer.start();

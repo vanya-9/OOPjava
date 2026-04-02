@@ -24,7 +24,7 @@ public class CarcaseSupplier extends Thread {
                 Thread.sleep(frequency);
             }
         }catch(InterruptedException e){
-            System.out.println("исклчючение  " + e.getMessage());
+            //System.out.println("исклчючение  " + e.getMessage());
             Thread.currentThread().interrupt();
         }
     }
