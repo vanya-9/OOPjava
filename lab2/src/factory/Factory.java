@@ -6,6 +6,7 @@ import java.util.Queue;
 public class Factory<T> {
     private final int capacity;
     private final Queue<T> items;
+    private volatile int countAllProducts = 0;
 
     public Factory(int capacity) throws IllegalArgumentException{
         if (capacity <= 0){
@@ -20,6 +21,7 @@ public class Factory<T> {
             wait();
         }
         items.add(accs);
+        countAllProducts += 1;
         notifyAll();
     }
 
@@ -35,5 +37,13 @@ public class Factory<T> {
         while(capacity <=items.size()){
             wait();
         }
+    }
+
+    public synchronized int getSizeNotNull(){
+        return items.size();
+    }
+
+    public synchronized int getTotalProducts(){
+        return countAllProducts;
     }
 }

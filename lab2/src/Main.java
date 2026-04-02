@@ -11,7 +11,7 @@ public class Main {
             
             app.start();
 
-            new Venv(app::stop);
+            new Venv(app, app::stop);
 
         } catch (IOException e) {
             System.err.println("Ошибка чтения конфигурации: " + e.getMessage());

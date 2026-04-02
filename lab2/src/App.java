@@ -20,6 +20,7 @@ public class App {
     private final ArrayList<AccessorySupplier> accessorySuppliers = new ArrayList<>();
     private final ArrayList<Dealer> dealers = new ArrayList<>();
 
+    private Factory<Machine> machineFactory;
     private CarcaseSupplier carcaseSupplier;
     private EngineSupplier engineSupplier;
     private ThreadPool threadPool;
@@ -33,7 +34,7 @@ public class App {
         Factory<Accessory> accessoryFactory = new Factory<>(config.getInt("FactoryAccessorySize"));
         Factory<Carcase> carcaseFactory = new Factory<>(config.getInt("FactoryCarcaseSize"));
         Factory<Engine> engineFactory = new Factory<>(config.getInt("FactoryEngineSize"));
-        Factory<Machine> machineFactory = new Factory<>(config.getInt("FactoryMachineSize"));
+        machineFactory = new Factory<>(config.getInt("FactoryMachineSize"));
 
         int countAccessorySupliers = config.getInt("AccessorySuppliers");
         int accessorySupplierFrequency = config.getInt("AccessorySupplierFrequency");
@@ -79,4 +80,20 @@ public class App {
         }
         System.out.println("[SYSTEM] Все сигналы остановки отправлены. Выход...");
     }
+
+    public int sizeMachineFactory(){
+        return machineFactory == null ? 0 : machineFactory.getSizeNotNull();
+    }
+
+    public int getTotatalWorkMachine(){
+        return machineFactory.getTotalProducts();
+    }
+
+    public void setDealerFrequency(int frequency){
+        for(Dealer dealer : dealers){
+            dealer.setFrequency(frequency);
+        }
+    }
+
+
 }

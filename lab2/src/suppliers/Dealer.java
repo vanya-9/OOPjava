@@ -4,12 +4,16 @@ import src.factory.Factory;
 import src.parts.Machine;
 
 public class Dealer extends Thread {
-    private final int frequency;
+    private volatile int frequency;
     private final Factory<Machine> machineFactory;
 
     public Dealer(int frequency, Factory<Machine> mchF){
         this.frequency = frequency;
         this.machineFactory = mchF;
+    }
+
+    public void setFrequency(int frequency){
+        this.frequency = frequency;
     }
 
     @Override
