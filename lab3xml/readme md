@@ -1,0 +1,7 @@
+Сборка 
+mvn clean install
+
+запуск
+java -cp target/chat-app-1.0-SNAPSHOT.jar com.rrt.chat.server.Main
+
+java -cp target/chat-app-1.0-SNAPSHOT.jar com.rrt.chat.client.Main
