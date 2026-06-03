@@ -22,12 +22,15 @@ public class Venv extends JFrame {
     public Venv(App app, Runnable onCloseAction){
         super("Интерфейс фабрики");
         super.setBounds(200, 100, 800, 800);
-        //super.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        super.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        super.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        // super.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        Timer updateTimer = new Timer(200, e -> updateStats());
 
         this.addWindowListener(new WindowAdapter(){
             @Override
             public void windowClosing(WindowEvent e){
+                updateTimer.stop();
                 onCloseAction.run();
             }
         });
@@ -73,7 +76,6 @@ public class Venv extends JFrame {
         // container.add(new JLabel("Управление:", SwingConstants.RIGHT)); 
         container.add(logButton);
 
-        Timer updateTimer = new Timer(200, e -> updateStats());
         updateTimer.start();
 
     }

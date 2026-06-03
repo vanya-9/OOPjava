@@ -25,7 +25,7 @@ public class Server{
     private final boolean enableLogging;
 
     public List<Message> messageHistory = new CopyOnWriteArrayList<>();
-    private static final int HISTORY_SIZE = 50;
+    private static final int HISTORY_SIZE = 10;
 
     private static UserManager userManager;
     private final Map<String, ChatRoom> chatRooms = new ConcurrentHashMap<>();
@@ -87,10 +87,8 @@ public class Server{
                 return;
             }
 
-            // ВАЖНО: Сначала сохраняем в список истории внутри объекта ChatRoom
             room.addMessage(message);
 
-            // Затем рассылаем всем онлайн-участникам
             for (String memberNick : room.getUsersRoom()) {
                 sendToUser(memberNick, message);
             }
@@ -111,7 +109,7 @@ public class Server{
         }
     }
 
-    public void broadcastOnlineLists(){
+    public void broadcastOnlineLists(){ //кому написать, куда войти
         StringBuilder sbUsers = new StringBuilder();
         for(User u : userManager.getAllUsers()) sbUsers.append(u.getNick()).append(",");
         broadcast(new Message(Message.Type.USER_LIST, "Server", "all", sbUsers.toString()));
@@ -135,10 +133,10 @@ public class Server{
         User u = userManager.getUser(nickname);
         if (u != null) u.joinRoom(formattedName);
         
-        // 1. Сначала подтверждаем вступление
+        //вступил
         sendToUser(nickname, new Message(Message.Type.NOTIFICATION, "Server", nickname, "Вы вступили в " + formattedName));
 
-        // 2. КЛЮЧЕВОЙ МОМЕНТ: Отправляем историю этой конкретной группы
+        // история
         for (Message histMsg : room.getHistory()) {
             sendToUser(nickname, histMsg);
         }

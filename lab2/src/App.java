@@ -68,12 +68,17 @@ public class App {
     }
 
     public void stop(){
-        System.out.println("Покидаем программу...");
-        controller.interrupt();
+        System.out.println("Покидаем программу");
 
         for(Thread thread : accessorySuppliers){
             thread.interrupt();
         }
+
+        controller.interrupt();
+
+        // for(Thread thread : accessorySuppliers){
+        //     thread.interrupt();
+        // }
         carcaseSupplier.interrupt();
         engineSupplier.interrupt();
         threadPool.stopAll();
@@ -81,7 +86,7 @@ public class App {
         for(Thread thread : dealers){
             thread.interrupt();
         }
-        System.out.println("Все сигналы остановки отправлены. Выход...");
+
     }
 
     public int sizeMachineFactory(){

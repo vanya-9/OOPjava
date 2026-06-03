@@ -40,10 +40,8 @@ public class SwingClient extends JFrame {
                 nickname = JOptionPane.showInputDialog(this, "Введите никнейм:", "Авторизация XML", JOptionPane.PLAIN_MESSAGE);
                 if (nickname == null || nickname.trim().isEmpty()) System.exit(0);
 
-                // Отправка логина (команда в XML)
                 sendToServer(new Message(Message.Type.LOGIN, nickname, "all", ""));
 
-                // Чтение ответа по протоколу: сначала 4 байта длины
                 int length = in.readInt();
                 byte[] buffer = new byte[length];
                 in.readFully(buffer);
@@ -51,7 +49,7 @@ public class SwingClient extends JFrame {
 
                 Message response = XmlHelper.fromXml(responseLine);
                 if (response.getType() == Message.Type.LOGIN_SUCCESS) {
-                    this.sessionId = response.getSessionId(); // Сохраняем уникальную сессию
+                    this.sessionId = response.getSessionId();
                     registered = true;
                 } else if (response.getType() == Message.Type.ERROR) {
                     JOptionPane.showMessageDialog(this, response.getContent(), "Ошибка", JOptionPane.ERROR_MESSAGE);
@@ -125,7 +123,7 @@ public class SwingClient extends JFrame {
         try {
             msg.setSessionId(sessionId); // Прикрепляем ID сессии к каждому сообщению
             byte[] data = XmlHelper.toXml(msg).getBytes("UTF-8");
-            out.writeInt(data.length); // Пишем 4 байта длины (Java int)
+            out.writeInt(data.length);
             out.write(data);
             out.flush();
         } catch (IOException e) {
@@ -137,9 +135,9 @@ public class SwingClient extends JFrame {
         new Thread(() -> {
             try {
                 while (true) {
-                    int length = in.readInt(); // Читаем длину следующего сообщения
+                    int length = in.readInt();
                     byte[] buffer = new byte[length];
-                    in.readFully(buffer);      // Читаем само тело сообщения
+                    in.readFully(buffer);    
                     String line = new String(buffer, "UTF-8");
                     
                     handleIncomingMessage(XmlHelper.fromXml(line));

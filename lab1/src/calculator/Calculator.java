@@ -14,7 +14,7 @@ public class Calculator {
     private static ExecutionContext context = new ExecutionContext();
     private static CommandFactory factory = new CommandFactory(); 
     public static void main(String[] args) throws Exception{ 
-        BufferedReader reader;
+        BufferedReader reader; // у него есть метод readline() для чтения целой строки
 
         if (args.length > 0){
             reader = new BufferedReader(new FileReader(args[0]));
@@ -35,7 +35,10 @@ public class Calculator {
             List<String> commandArgs = Arrays.asList(parts).subList(1, parts.length);
 
             Command command = factory.create(name);
-            command.execute(context, commandArgs);
+            command.execute(context, commandArgs); //выполняем команду
         }
     }
 }
+
+// javac -cp "./lib/*:./src" -d bin src/calculator/CalculatorTest.java
+// java -cp "./lib/*:./bin" org.testng.TestNG -testclass calculator.CalculatorTest

@@ -19,10 +19,6 @@ public class TaskQueue{
         notifyAll();
     }
 
-    public synchronized void interruptWaiters(){
-        notifyAll();
-    }
-
     public synchronized Runnable take()throws InterruptedException{
         while(tasks.isEmpty()){
             if(Thread.currentThread().isInterrupted()){

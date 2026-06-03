@@ -28,14 +28,6 @@ public class ClientHandler implements Runnable {
         this.server = server;
     }
 
-    // Вспомогательный метод для отправки в этот конкретный сокет
-    private void sendMsg(Message msg) throws IOException {
-        byte[] data = XmlHelper.toXml(msg).getBytes("UTF-8");
-        out.writeInt(data.length);
-        out.write(data);
-        out.flush();
-    }
-
     @Override
     public void run() {
         try {
@@ -43,7 +35,6 @@ public class ClientHandler implements Runnable {
             in = new DataInputStream(socket.getInputStream());
 
             while (nickname == null) {
-                // Читаем по ТЗ: 4 байта длины, потом массив байтов
                 int length = in.readInt();
                 byte[] buffer = new byte[length];
                 in.readFully(buffer);
@@ -74,7 +65,6 @@ public class ClientHandler implements Runnable {
             server.broadcastOnlineLists();
 
             while (true) {
-                // Читаем по ТЗ: 4 байта длины, потом массив байтов
                 int length = in.readInt();
                 byte[] buffer = new byte[length];
                 in.readFully(buffer);
@@ -87,10 +77,11 @@ public class ClientHandler implements Runnable {
                     continue;
                 }
 
-                message = new Message(message.getType(), nickname, message.getTarget(), message.getContent());
+                message = new Message(message.getType(), nickname, message.getTarget(), message.getContent());//тут мы даем имя, так как xmlhelper делает все unknown
+                
                 if (message.getType() == Message.Type.FILE) {
                      message = new Message(Message.Type.FILE, nickname, message.getTarget(), XmlHelper.fromXml(line).getFileData(), XmlHelper.fromXml(line).getFileName());
-                }
+                } //тут мы вызываем конструктор для файла
 
                 long currentTime = System.currentTimeMillis();
                 if (currentTime - lastMessageTime < RATE_LIMIT_MS) {
@@ -118,7 +109,7 @@ public class ClientHandler implements Runnable {
                 }
             }
         } catch (EOFException e) {
-            // Нормальное отключение сокета
+            
         } catch (Exception e) {
             System.err.println("Отключение/Ошибка: " + nickname);
         } finally {
@@ -133,5 +124,15 @@ public class ClientHandler implements Runnable {
             server.broadcastOnlineLists();
         }
         try { if (in != null) in.close(); if (out != null) out.close(); if (socket != null) socket.close(); } catch(IOException e) {}
+    }
+
+    private void sendMsg(Message msg) throws IOException {
+        byte[] data = XmlHelper.toXml(msg).getBytes("UTF-8");
+        synchronized(out){
+            out.writeInt(data.length);
+            out.write(data);
+            out.flush();
+
+        }
     }
 }

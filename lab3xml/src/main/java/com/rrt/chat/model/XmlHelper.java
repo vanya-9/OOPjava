@@ -33,7 +33,7 @@ public class XmlHelper {
                 break;
             case NOTIFICATION:
             case TEXT:
-                // Для отправки на сервер используем command, от сервера - event (по ТЗ)
+                // Для отправки на сервер command, от сервера - event
                 if (msg.getSessionId() != null && !msg.getSessionId().isEmpty()) { // От клиента серверу
                     xml.append("<command name=\"message\">")
                        .append("<message>").append(msg.getContent()).append("</message>")
@@ -49,7 +49,7 @@ public class XmlHelper {
                 }
                 break;
             case FILE:
-                // Расширение для передачи файлов через Base64
+                // Расширение для передачи файлов
                 String base64Data = Base64.getEncoder().encodeToString(msg.getFileData());
                 if (msg.getSessionId() != null && !msg.getSessionId().isEmpty()) {
                     xml.append("<command name=\"file\">")
@@ -161,5 +161,5 @@ public class XmlHelper {
         NodeList list = element.getElementsByTagName(tag);
         if (list.getLength() > 0) return list.item(0).getTextContent();
         return "all"; 
-    }
+    } // возвращает содержимое тега
 }

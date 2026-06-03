@@ -26,7 +26,6 @@ public class ThreadPool {
         for(Thread thread : workers){
             thread.interrupt();
         }
-        queue.interruptWaiters();
     }
 
     private class WorkerThread extends Thread{

@@ -12,10 +12,10 @@ public class Push implements Command {
         double value;
 
         if (context.hasVariable(arg)){
-            value = context.getVariable(arg);
+            value = context.getVariable(arg); //смотрим есть ли в variable
         }
         else{
-            value = Double.parseDouble(arg);
+            value = Double.parseDouble(arg); //если нет, то парсим строку
         }
         
         context.push(value);

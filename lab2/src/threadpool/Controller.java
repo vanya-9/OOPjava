@@ -31,7 +31,7 @@ public class Controller extends Thread {
                 threadPool.put(task);
             }
         }catch(InterruptedException e){
-            System.out.println(e.getMessage());
+            // System.out.println(e.getMessage());
             Thread.currentThread().interrupt();
         }
     }

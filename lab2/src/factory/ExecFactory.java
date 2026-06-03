@@ -33,7 +33,7 @@ public class ExecFactory implements Runnable {
             Machine machine = new Machine(id, accessory, carcase, engine);
             machineFactory.put(machine);
         }catch(InterruptedException e){
-            System.out.println("Потоки " + e.getMessage());
+            // System.out.println("Потоки " + e.getMessage());
             Thread.currentThread().interrupt();
         }
     }

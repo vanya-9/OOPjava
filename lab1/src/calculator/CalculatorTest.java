@@ -65,7 +65,7 @@ public class CalculatorTest {
     try {
         div.execute(context, Collections.emptyList());
         Assert.fail("Ожидалось ArithmeticException");
-    } catch (ArithmeticException e) {
+    } catch (IllegalArgumentException e) {
         Assert.assertEquals(e.getMessage(), "Division by zero");
     }
 }

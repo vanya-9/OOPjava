@@ -27,13 +27,14 @@ public class User {
     public void leaveRoom(String roomName) { chatRooms.remove(roomName); }
     public Set<String> getRooms() { return chatRooms; }
 
-    // В клиентский сокет
-    public synchronized void sendMessage(Message msg) {
+    public void sendMessage(Message msg) {
         try {
             byte[] data = XmlHelper.toXml(msg).getBytes("UTF-8");
-            out.writeInt(data.length); // Сначала 4 байта длины (по ТЗ)
-            out.write(data);           // Затем само тело XML
-            out.flush();
+            synchronized(out){
+                out.writeInt(data.length); 
+                out.write(data);
+                out.flush();
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
